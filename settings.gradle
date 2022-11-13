@@ -1,0 +1,4 @@
+include 'Tests'
+include 'Tests:Java_Test'
+findProject(':Tests:Java_Test')?.name = 'Java_Test'
+
