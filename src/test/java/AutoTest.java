@@ -55,7 +55,7 @@ public class AutoTest {
                 text("8777777777"),
                 text("15 March,1999"),
                 text("Math"),
-                text ("Civics"),
+                text("Civics"),
                 text("Reading"),
                 text("test_pictures.png"),
                 text("Address: ZIP-code, city, str., apt."),
