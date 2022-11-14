@@ -2,9 +2,12 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.File;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+
 
 
 public class AutoTest {
@@ -33,7 +36,7 @@ public class AutoTest {
         $(".react-datepicker__year-select").selectOption("1999");
         $(".react-datepicker__day--015").doubleClick();
         $("#subjectsInput").click();
-        $("#subjectsInput").setValue("Math,Law and another").pressTab();
+        $("#subjectsInput").setValue("Math").pressTab();
         $(by("for", "hobbies-checkbox-2")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/test_pictures.png"));
         $("[id=currentAddress]").setValue("Address: ZIP-code, city, str., apt.");
@@ -42,5 +45,17 @@ public class AutoTest {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Panipat")).click();
         $("#submit").click();
+
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Example_name Last_name"),
+                text("Example@examle.com"),
+                text("Male"),
+                text("8777777777"),
+                text("15 March,1999"),
+                text("Math"),
+                text("Reading"),
+                text("test_pictures.png"),
+                text("Address: ZIP-code, city, str., apt."),
+                text("Haryana Panipat"));
     }
 }
