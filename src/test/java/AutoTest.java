@@ -37,6 +37,8 @@ public class AutoTest {
         $(".react-datepicker__day--015").doubleClick();
         $("#subjectsInput").click();
         $("#subjectsInput").setValue("Math").pressTab();
+        $("#subjectsInput").click();
+        $("#subjectsInput").setValue("Civics").pressTab();
         $(by("for", "hobbies-checkbox-2")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/test_pictures.png"));
         $("[id=currentAddress]").setValue("Address: ZIP-code, city, str., apt.");
@@ -53,6 +55,7 @@ public class AutoTest {
                 text("8777777777"),
                 text("15 March,1999"),
                 text("Math"),
+                text ("Civics"),
                 text("Reading"),
                 text("test_pictures.png"),
                 text("Address: ZIP-code, city, str., apt."),
