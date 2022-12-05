@@ -1,6 +1,6 @@
 package autotest;
 
-import VariablesFromAutotest.VariablesFromAutotest;
+import autotest.VariablesFromAutotest.VariablesFromAutotest;
 import org.junit.jupiter.api.Test;
 
 

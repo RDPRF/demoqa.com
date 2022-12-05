@@ -1,4 +1,4 @@
-package VariablesFromAutotest;
+package autotest.VariablesFromAutotest;
 
 import autotest.pages.components.CalendarComponent;
 import autotest.pages.components.ResultsModal;
