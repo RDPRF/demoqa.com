@@ -1,13 +1,11 @@
-package autotest.VariablesFromAutotest;
+package autotest;
 
 import autotest.pages.components.CalendarComponent;
 import autotest.pages.components.ResultsModal;
 import autotest.pages.components.StateComponent;
 import com.codeborne.selenide.SelenideElement;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class VariablesFromAutotest {
@@ -19,7 +17,9 @@ public class VariablesFromAutotest {
             lastNameImput = $("#lastName"),
             emailImput = $("#userEmail"),
             numberImput = $("#userNumber"),
-            adressImput = $("[id=currentAddress]");
+            adressImput = $("[id=currentAddress]"),
+            uploadPicturesImput = $("#uploadPicture"),
+            hobbiesInput = $("#hobbiesWrapper");
 
     public VariablesFromAutotest openPage() {
         open("https://demoqa.com/automation-practice-form");
@@ -48,8 +48,8 @@ public class VariablesFromAutotest {
         return this;
     }
 
-    public VariablesFromAutotest setGender() {
-        $(by("for", "gender-radio-1")).doubleClick();
+    public VariablesFromAutotest setGender(String gender) {
+        $("#genterWrapper").$(byText(gender)).click();
 
         return this;
     }
@@ -76,15 +76,14 @@ public class VariablesFromAutotest {
         return this;
     }
 
-    public VariablesFromAutotest setHobbies () {
-        $(by("for", "hobbies-checkbox-2")).click();
+    public VariablesFromAutotest setHobbies (String hobbies) {
+        hobbiesInput.find(byText(hobbies)).click();
 
         return this;
     }
 
-    public VariablesFromAutotest uploadPicture () {
-        $("#uploadPicture").uploadFile
-                (new File("src/test/resources/test_pictures.png"));
+    public VariablesFromAutotest uploadPicture (String png) {
+       uploadPicturesImput.uploadFromClasspath (png);
 
         return this;
     }

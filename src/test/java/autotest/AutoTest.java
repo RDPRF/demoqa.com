@@ -1,6 +1,5 @@
 package autotest;
 
-import autotest.VariablesFromAutotest.VariablesFromAutotest;
 import org.junit.jupiter.api.Test;
 
 
@@ -13,12 +12,12 @@ public class AutoTest extends TestBase {
                 .setFirstName("Dmitry")
                 .setLastName("Rodichev")
                 .setEmail("dmitry@rodichev.com")
-                .setGender()
+                .setGender("Male")
                 .setNumber("71111111111")
                 .setBirthday("21","March","1998")
                 .setSubjekt("Math","Civics")
-                .setHobbies()
-                .uploadPicture()
+                .setHobbies("Reading")
+                .uploadPicture("test_pictures.png")
                 .setAddress("Address: ZIP-code, city, str., apt.")
                 .chooseState("Haryana","Karnal")
                 .verifyResultsModal()
