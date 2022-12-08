@@ -19,9 +19,10 @@ public class AutoTest extends TestBase {
                 .setHobbies("Reading")
                 .uploadPicture("test_pictures.png")
                 .setAddress("Address: ZIP-code, city, str., apt.")
-                .chooseState("Haryana","Karnal")
-                .verifyResultsModal()
-                .checkResults("Student name", "Dmitry Rodichev")
+                .chooseState("Haryana","Karnal");
+
+        new VariablesFromAutotest().verifyResultsModal()
+                .checkResults("Student Name", "Dmitry Rodichev")
                 .checkResults("Student Email", "dmitry@rodichev.com")
                 .checkResults("Gender", "Male")
                 .checkResults("Mobile", "7111111111")
@@ -30,7 +31,7 @@ public class AutoTest extends TestBase {
                 .checkResults("Hobbies", "Reading")
                 .checkResults("Picture", "test_pictures.png")
                 .checkResults("Address", "Address: ZIP-code, city, str., apt.")
-                .checkResults("State and City", "Male");
+                .checkResults("State and City", "Haryana Karnal");
 
     }
 }
