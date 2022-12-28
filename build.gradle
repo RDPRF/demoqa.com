@@ -1,9 +1,24 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
 }
 
 tasks.withType(JavaCompile) {
@@ -11,17 +26,24 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation (
-            "com.codeborne:selenide:6.9.0",
-            "org.junit.jupiter:junit-jupiter:5.9.0",
             "com.github.javafaker:javafaker:1.0.2",
+            "com.codeborne:selenide:6.9.0",
+            "io.qameta.allure:allure-selenide:2.19.0",
+            "org.junit.jupiter:junit-jupiter:5.9.1",
+            "org.slf4j:slf4j-simple:1.7.32"
     )
-
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 help {
@@ -29,9 +51,9 @@ help {
         println ""
         println "************************************************************************ "
         println "***                                                                  *** "
-        println "***                        It's a first auto test                    *** "
+        println "*** Welcome to https://github.com/qa-guru/demoqa-test-16!            *** "
         println "***                                                                  *** "
-        println "***                            ./gradlew help                        *** "
+        println "*** ./gradlew help                                                   *** "
         println "***                                                                  *** "
         println "************************************************************************ "
         println ""
