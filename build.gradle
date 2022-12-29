@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 repositories {
@@ -13,9 +14,11 @@ tasks.withType(JavaCompile) {
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation (
-            "com.codeborne:selenide:6.9.0",
-            "org.junit.jupiter:junit-jupiter:5.9.0",
             "com.github.javafaker:javafaker:1.0.2",
+            "com.codeborne:selenide:6.9.0",
+            "io.qameta.allure:allure-selenide:2.19.0",
+            "org.junit.jupiter:junit-jupiter:5.9.1",
+            "org.slf4j:slf4j-simple:1.7.32"
     )
 
 }
@@ -23,6 +26,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 
 help {
     doFirst {
